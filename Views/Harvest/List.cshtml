@@ -4,38 +4,79 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Harvest List (Filterable)</h2>
+<h2>Harvest List</h2>
 
-<!-- Filter form -->
-<form method="get">
-    <label>Category:</label>
-    <input name="category" />
-    <label>Start Date:</label>
-    <input type="date" name="startDate" />
-    <label>End Date:</label>
-    <input type="date" name="endDate" />
-    <button type="submit">Filter</button>
-</form>
+<!-- this code here is for the fiter form , my code with AI editing-->
+<div class="card">
+    <form method="get">
+        <div class="filterrow">
 
-<!-- Table of results -->
-<table border="1" cellpadding="5">
+          <div class="filter-item">
+               <label>Category:</label>
+               <input name="category" />
+          </div>
+
+           <div class="filter-item ">
+                    <label>Start Date:</label>
+                    <inpu type="date" name="startDate" />
+           </div>
+
+                        <div class="filter-item">
+              <label>End Date:</label>
+              <input type="date" name="endDate" />
+                        </div>
+
+            <button type="submit">Filter</button>
+        </div>
+    </form>
+</div>
+
+<!-- this is the tabke for results, my code with AI editing -->
+<table>
     <thead>
         <tr>
-            <th>Item</th>
-            <th>Category</th>
-            <th>Date</th>
-            <th>Grower</th>
+           <th>Item</th>
+                <th>Category</th>
+                <th>Date</th>
+           <th>Grower</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.ItemName</td>
-                <td>@item.Category</td>
-                <td>@item.HarvestDate.ToShortDateString()</td>
-                <td>@item.Grower.FullName</td>
+
+               <td>@item.ItemName</td>
+                    <td><span class="category tag">@item.Category</span></td>
+                    <td>@item.HarvestDate.ToShortDateString()</td>
+               <td>@item.Grower.FullName</td>
+
             </tr>
         }
     </tbody>
 </table>
+
+
+
+
+<!-- my code with AI editing -->
+<style>
+    .filter-row {
+         display: flex;
+       flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .filter-item {
+            flex-grow: 1;
+          min-width: 200px;
+    }
+
+    .category-tag {
+            background-color: var(--accent-color);
+        color: var(--text-color);
+         padding: 3px 8px;
+        border-radius: 4px;
+          font-size: 0.9em;
+    }
+</style>

@@ -1,70 +1,42 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
+//some code edited by 
 public class HarvestController : Controller
 {
     private readonly AgriConnectDbContext _context;
-
     public HarvestController(AgriConnectDbContext context)
     {
         _context = context;
     }
 
-    // GET: Add Harvest Item (Grower only)
     public IActionResult Create()
     {
-        if (HttpContext.Session.GetString("Role") != "Grower")
-            return Unauthorized();
-
-        return View();
+        return View(); // this code here loads the Create.cshtml in harvest view 
     }
 
-    // POST: Add Harvest Item
     [HttpPost]
-    public IActionResult Create(HarvestItem item)
+    public IActionResult Create(HarvestItem item)// my code with AI editing 
     {
-        if (HttpContext.Session.GetString("Role") != "Grower")
-            return Unauthorized();
-
-        // For simplicity, use the first grower found
+        // Simulate assigning to first grower (for testing)
         var grower = _context.Growers.FirstOrDefault();
-
-        if (grower == null)
+         if (grower == null)
         {
-            ViewBag.Error = "No grower profile found.";
+                    ViewBag.Error = "No grower found.";
             return View();
         }
 
         item.GrowerId = grower.Id;
+        _context.HarvestIteams.Add(item);
 
-        if (ModelState.IsValid)
-        {
-            _context.HarvestItems.Add(item);
-            _context.SaveChanges();
-            return RedirectToAction("List");
-        }
+                _context.SaveChanges();
 
-        return View(item);
+        return RedirectToAction("List");
     }
 
-    // GET: View & Filter Harvest Items (Employee only)
-    public IActionResult List(string category, DateTime? startDate, DateTime? endDate)
+    public IActionResult List()
     {
-        if (HttpContext.Session.GetString("Role") != "Employee")
-            return Unauthorized();
-
-        // Get all harvest items with related grower
-        var items = _context.HarvestItems.Include(h => h.Grower).AsQueryable();
-
-        // Apply filters
-        if (!string.IsNullOrEmpty(category))
-            items = items.Where(h => h.Category == category);
-        if (startDate.HasValue)
-            items = items.Where(h => h.HarvestDate >= startDate.Value);
-        if (endDate.HasValue)
-            items = items.Where(h => h.HarvestDate <= endDate.Value);
-
-        return View(items.ToList());
+        var items = _context.HarvestIteams.Include(h => h.Grower).ToList();
+        return View(items); // this loads the List.cshtml in harvest views 
     }
 }

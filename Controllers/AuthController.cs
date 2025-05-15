@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using System.Linq;
+using AgriEnergyConnect.Models;
 
 public class AuthController : Controller
 {
@@ -11,35 +12,37 @@ public class AuthController : Controller
         _context = context;
     }
 
-    // Show the login form
-    public IActionResult Login()
+    // this is to show the login form
+        public IActionResult Login()
     {
         return View();
     }
 
-    // Handle login POST request
-    [HttpPost]
+    // this is to handle login POST request
+            [HttpPost]
     public IActionResult Login(string username, string password)
     {
-        // Try to find a matching user in the database
-        var user = _context.SystemUsers.SingleOrDefault(u => u.Username == username && u.Password == password);
+        // this is here to try and find a matching user in the database
+       var user = _context.SystemUser.SingleOrDefault(u => u.username == username && u.Password == password);
 
-        if (user != null)
+       if (user != null)
         {
-            // Save user info to session
-            HttpContext.Session.SetString("Username", user.Username);
+            // this is here to save user info to session
+            HttpContext.Session.SetString("Username", user.username);
             HttpContext.Session.SetString("Role", user.Role);
 
             return RedirectToAction("Index", "Home");
         }
 
-        // Show error if login fails
-        ViewBag.Error = "Invalid username or password.";
+
+        // this is here to show error if login fails
+        ViewBag.Error = "it is an invalid username or password.";
         return View();
     }
 
-    // Log out the user and clear session
-    public IActionResult Logout()
+
+    // this is to log out the user and clear session
+         public IActionResult Logout()
     {
         HttpContext.Session.Clear();
         return RedirectToAction("Login");

@@ -4,25 +4,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Add Harvest Item</h2>
+<div class="card">
 
-<form method="post">
-    <label>Item Name:</label>
-    <input asp-for="ItemName" required />
-    <br />
+    <h2>Add Harvest Item</h2>
 
-    <label>Category:</label>
-    <input asp-for="Category" required />
-    <br />
+    <form method="post">
+            <label>Item Name:</label>
+        <input asp-for="ItemName" required />
 
-    <label>Harvest Date:</label>
-    <input asp-for="HarvestDate" type="date" required />
-    <br />
+            <label>Category:</label>
+        <input asp-for="Category" required />
 
-    <button type="submit">Save Item</button>
+            <label>Harvest Date:</label>
+        <input asp-for="HarvestDate" type="date" required />
 
-    @if (ViewBag.Error != null)
-    {
-        <p style="color:red">@ViewBag.Error</p>
-    }
-</form>
+            <button type="submit">save item</button>
+
+        @if (ViewBag.Error != null)
+        {
+            <p class="error message">@ViewBag.Error</p>
+        }
+    </form>
+</div>

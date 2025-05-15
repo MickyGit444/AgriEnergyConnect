@@ -1,10 +1,190 @@
-﻿<!DOCTYPE html>
+﻿/* Simple color theme */
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>@ViewData["Title"] - AgriConnectHub</title>
+    <style>
+
+        /* these arre the coloures used for the color theme */
+        :root {
+            --primary-color: #4CAF50; /* this colour is green */
+            --secondary-color: #2E7D32; /* this colour is dark Green */
+            --accent-color: #FFC107; /* this colour is yellow */
+            --text-color: #333333; /* this is dark grey */
+            --light-color: #F5F5F5; /* this is light grey */
+            --light-border: #E0E0E0; /* this colour is border Grey */
+            --error-color: #F44336; /* this colour is red */
+        }
+
+        /* this is a basic reset */
+        * {
+                margin: 0;
+            padding: 0;
+             box-sizing: border-box;
+        }
+
+        body {
+             font-family:  Arial, Helvetica, sans-serif;
+           color: var(--text-color);
+             line-height:  1.5;
+            background-color:var(--light-color);
+        }
+
+
+        /* this code is for the navigation */
+        nav {
+            background-color: var(--primary-color);
+             padding:  15px;
+            color: white;
+        }
+
+        nav a {
+                color: white;
+            text-decoration: none;
+             margin-right: 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* this code is for the main content */
+        main {
+           padding: 20px;
+                max-width: 1200px;
+             margin: 0 auto;
+        }
+
+        h2 {
+                color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+
+        /* these are the form elements */
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+
+             margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+             margin-bottom: 15px;
+                border: 1px solid var(--light-border);
+            border-radius: 4px;
+        }
+
+
+        button {
+            padding: 10px 15px;
+             border-radius: 4px;
+            background-color: var(--primary-color);
+            color: white;
+              border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+
+        }
+
+
+        /* this code is for the tablesables, i have used AI for editing my code */
+
+        table {
+            width: 100%;
+                border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: left;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid var(--light-border);
+        }
+
+        /* this is for the utility classes */
+        .error-message {
+            color: var(--error-color);
+            margin-top: 10px;
+        }
+
+        .card {
+           
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: white;
+        }
+
+    
+        }
+
+        /* this code is for the action buttons */
+        .action-button {
+
+            background-color: var(--primary-color);
+            padding: 12px 15px;
+                border-radius: 4px;
+            display: inline-block;
+             margin-bottom: 10px;
+            transition: background-color 0.2s;
+            color: white;
+            text-decoration: none;
+        }
+
+        .action-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .action-icon {
+            margin-right: 10px;
+        }
+
+        /* this is the welcome card, my code but edited with AI*/
+        .welcome-card {
+            background-color: white;
+            border-radius: 4px;
+            padding: 25px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .role-badge {
+            background-color: var(--light-color);
+                display: inline-block;
+             padding: 5px 10px;
+                border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+
 </head>
+
 <body>
+
     <nav>
         <a href="/">Home</a> |
         <a href="/Auth/Login">Login</a> |
@@ -14,10 +194,10 @@
         <a href="/Harvest/List">View Harvests</a>
     </nav>
 
-    <hr />
-
     <main>
+
         @RenderBody()
     </main>
+
 </body>
 </html>

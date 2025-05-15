@@ -1,7 +1,7 @@
-﻿public class SystemUser
+﻿public class SystemUser //getters and setters 
 {
-    public int Id { get; set; }
-    public string Username { get; set; }
+     public int Id { get; set; }
+   public string username { get; set; }
     public string Password { get; set; }
-    public string Role { get; set; } // "Grower" or "Employee"
+   public string Role { get; set; } // this is for the "Grower" or the "Employee"
 }

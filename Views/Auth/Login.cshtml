@@ -1,21 +1,44 @@
-﻿@{
+﻿<! this is  for the login>
+
+@model SystemUser
+@{
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Login</h2>
+<div class="login-container">
 
-<form method="post">
-    <label>Username:</label>
-    <input name="username" required />
+    <div class="card login-card">
+        <h2>Login</h2>
 
-    <label>Password:</label>
-    <input name="password" type="password" required />
+        <form method="post">
 
-    <button type="submit">Login</button>
+            <label>Username:</label>
+          <input name="username" required />
 
-    @if (ViewBag.Error != null)
-    {
-        <p style="color:red">@ViewBag.Error</p>
+             <label>Password:</label>
+
+         <input name="password" type="password" required />
+
+            <button type="Submit">Login</button>
+           @if (ViewBag.Error != null)
+            {
+                <p class="error message">@ViewBag.Error</p>
+            }
+        </form>
+    </div>
+</div>
+
+<! -- code from AI-->
+<style>
+    .login-container {
+        display: flex;
+        justify-content: center
+        padding: 40px 0;
     }
-</form>
+
+    .login-card {
+        max-width: 400px;
+        width: 100%;
+    }
+</style>

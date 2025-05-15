@@ -1,33 +1,35 @@
 using Microsoft.EntityFrameworkCore;
-using AgriEnergyConnect.Models; 
+using AgriEnergyConnect.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add MVC services
-builder.Services.AddControllersWithViews();
+// this is to add MVC services
+    builder.Services.AddControllersWithViews();
 
-// Add session support
+// this is to add session support
 builder.Services.AddSession();
 
-// Configure EF Core with SQL Server
+// this is to configure the EF Core with SQL Server
 builder.Services.AddDbContext<AgriConnectDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-);
+    options.UseInMemoryDatabase("AgriConnectMemoryDb"));
 
-// Build the app
-var app = builder.Build();
+// this is to uild the app
+    var app = builder.Build();
 
-// Use static files (e.g. CSS, JS)
-app.UseStaticFiles();
+// this is to use static files 
+    app.UseStaticFiles();
 
-// Use session (must come before routing)
-app.UseSession();
+// this is to use session (must come before routing)
+ app.UseSession();
 
-// Enable routing
-app.UseRouting();
+// this is to enable routing
+        app.UseRouting();
 
-// Map the default route
+// this is to map the default route
 app.MapDefaultControllerRoute();
 
-// Run the app
+
+// this is to run the app
 app.Run();

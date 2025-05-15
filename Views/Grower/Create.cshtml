@@ -4,16 +4,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Add New Grower</h2>
+<div class="card">
 
-<form method="post">
-    <label>Full Name:</label>
-    <input asp-for="FullName" required />
-    <br />
+    <h2>Add New Grower</h2>
 
-    <label>Region:</label>
-    <input asp-for="Region" required />
-    <br />
+    <form method="post">
+            <label>Full Name:</label>
 
-    <button type="submit">Save Grower</button>
-</form>
+        <input asp-for="FullName" required />
+
+            <label>Region:</label>
+
+        <input asp-for="Region" required />
+
+            <button type="submit">save grower</button>
+    </form>
+
+</div>
