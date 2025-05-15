@@ -1,0 +1,19 @@
+﻿@model Grower
+@{
+    ViewData["Title"] = "Add Grower";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add New Grower</h2>
+
+<form method="post">
+    <label>Full Name:</label>
+    <input asp-for="FullName" required />
+    <br />
+
+    <label>Region:</label>
+    <input asp-for="Region" required />
+    <br />
+
+    <button type="submit">Save Grower</button>
+</form>

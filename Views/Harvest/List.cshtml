@@ -1,0 +1,41 @@
+﻿@model List<HarvestItem>
+@{
+    ViewData["Title"] = "Harvest List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Harvest List (Filterable)</h2>
+
+<!-- Filter form -->
+<form method="get">
+    <label>Category:</label>
+    <input name="category" />
+    <label>Start Date:</label>
+    <input type="date" name="startDate" />
+    <label>End Date:</label>
+    <input type="date" name="endDate" />
+    <button type="submit">Filter</button>
+</form>
+
+<!-- Table of results -->
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Grower</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ItemName</td>
+                <td>@item.Category</td>
+                <td>@item.HarvestDate.ToShortDateString()</td>
+                <td>@item.Grower.FullName</td>
+            </tr>
+        }
+    </tbody>
+</table>

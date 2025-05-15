@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - AgriConnectHub</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/Auth/Login">Login</a> |
+        <a href="/Auth/Logout">Logout</a> |
+        <a href="/Grower/Create">Add Grower</a> |
+        <a href="/Harvest/Create">Add Harvest</a> |
+        <a href="/Harvest/List">View Harvests</a>
+    </nav>
+
+    <hr />
+
+    <main>
+        @RenderBody()
+    </main>
+</body>
+</html>
